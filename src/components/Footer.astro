@@ -1,0 +1,68 @@
+---
+import { site } from '../config/site';
+import { companyNav, flattenServices } from '../config/navigation';
+
+const year = new Date().getFullYear();
+const services = flattenServices();
+---
+
+<footer class="site-footer">
+	<div class="wrap footer-grid">
+		<div class="footer-brand">
+			<p class="footer-word">Meridian <span>Integrations</span></p>
+			<span class="footer-tag">{site.tagline}</span>
+			<p>{site.disciplines}</p>
+		</div>
+		<div>
+			<p class="footer-heading">Services</p>
+			<ul class="footer-links">
+				{
+					services.map((item) => (
+						<li>
+							<a href={item.href}>{item.label}</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+		<div>
+			<p class="footer-heading">Company</p>
+			<ul class="footer-links">
+				{
+					companyNav.map((item) => (
+						<li>
+							<a href={item.href}>{item.label}</a>
+						</li>
+					))
+				}
+				<li><a href="/privacy/">Privacy Policy</a></li>
+				<li><a href="/terms/">Terms</a></li>
+				{
+					site.phoneTel && site.phoneDisplay && (
+						<li>
+							<a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
+						</li>
+					)
+				}
+				{
+					site.email && (
+						<li>
+							<a href={`mailto:${site.email}`}>{site.email}</a>
+						</li>
+					)
+				}
+				{
+					site.social.map((item) => (
+						<li>
+							<a href={item.href} rel="noopener noreferrer">{item.label}</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+	<div class="wrap footer-base">
+		<p>© {year} {site.name}. All rights reserved.</p>
+		<p>{site.serviceArea}</p>
+	</div>
+</footer>

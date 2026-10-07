@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+import { breadcrumbNode } from '../config/schema';
+
+const description =
+	'Terms of use for the Meridian Integrations website. Draft pending legal review. Project work is governed by a separate agreement.';
+const path = Astro.url.pathname;
+---
+
+<BaseLayout
+	title="Terms of Use"
+	description={description}
+	path={path}
+	extraSchema={[breadcrumbNode([{ name: 'Home', path: '/' }, { name: 'Terms', path }])]}
+>
+	<nav class="crumbs" aria-label="Breadcrumb">
+		<div class="wrap">
+			<ol>
+				<li><a href="/">Home</a></li>
+				<li><span aria-current="page">Terms</span></li>
+			</ol>
+		</div>
+	</nav>
+
+	<article class="section">
+		<div class="wrap-narrow prose">
+			{
+				!site.legalReviewed && (
+					<p class="legal-banner">
+						Draft for review by qualified counsel before these terms are relied on. Last drafted {site.legalDraftDate}.
+						This page is not legal advice and not a contract for installation or design work.
+					</p>
+				)
+			}
+			<h1>Terms of use</h1>
+			<p>
+				These terms cover use of the {site.name} website. A consultation request does not create a project. Design,
+				installation, electrical work, and website development proceed only under a separate agreement that states
+				scope and price.
+			</p>
+
+			<h2>Information on this site</h2>
+			<p>
+				The pages describe services and an approach. They are not a promise of a particular ranking, charging speed,
+				wireless distance, detection feature, or energy saving. Those depend on the property, the equipment, and the
+				design. Where a limitation matters, the service pages say so.
+			</p>
+
+			<h2>Electrical work</h2>
+			<p>
+				EV charger and other electrical work must comply with applicable electrical code, permitting, manufacturer
+				instructions, and licensing requirements, including inspection where it applies. Nothing on this website is a
+				permit, a license, or an engineering stamp.
+			</p>
+
+			<h2>Website projects</h2>
+			<p>
+				Statements about source-code ownership and the absence of a traditional hosting fee apply to qualifying
+				static sites delivered under a project agreement. Domain registration, email, and third-party services can
+				have their own costs and terms. Ownership of a finished website, including the repository, should be written
+				into that agreement rather than assumed from this page.
+			</p>
+
+			<h2>No professional relationship from browsing</h2>
+			<p>
+				Reading the site, or sending a consultation form, does not by itself create a contractor, agency, or
+				fiduciary relationship. Do not send confidential information you are not prepared to have stored in order to
+				answer you.
+			</p>
+
+			<h2>Intellectual property</h2>
+			<p>
+				The text, layout, and graphics of this website belong to {site.name} unless noted. You may not copy the site
+				design for another business. Project deliverables you commission are governed by the project agreement, which
+				may grant you ownership of your website’s source code.
+			</p>
+
+			<h2>Liability</h2>
+			<p>
+				The website is provided for general information. To the extent the law allows, {site.name} is not liable for
+				decisions made solely from these pages without a project-specific assessment. Counsel should replace this
+				paragraph with a limitation that is enforceable in Colorado.
+			</p>
+
+			<h2>Changes</h2>
+			<p>
+				These terms can be updated by publishing a new version on this page. The draft date above should be replaced
+				with an effective date after legal review.
+			</p>
+
+			<h2>Contact</h2>
+			<p>
+				{
+					site.email ? (
+						<>
+							Questions about these terms: <a href={`mailto:${site.email}`}>{site.email}</a>.
+						</>
+					) : (
+						<>Questions about these terms can be sent once a public email address is published on the contact page.</>
+					)
+				}
+			</p>
+		</div>
+	</article>
+</BaseLayout>

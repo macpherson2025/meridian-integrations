@@ -1,0 +1,159 @@
+---
+import { site } from '../config/site';
+
+const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? '';
+
+const projectTypes = [
+	'Premium Residential Estate',
+	'Commercial Property',
+	'Builder or Architect Inquiry',
+];
+---
+
+<form
+	id="consultation-form"
+	class="consultation-form"
+	method="post"
+	action={endpoint || undefined}
+	data-endpoint={endpoint}
+>
+	<div class="form-body">
+		<div class="form-grid">
+			<div class="field">
+				<label for="name">Full Name / Principal Contact</label>
+				<input id="name" name="name" type="text" autocomplete="name" required maxlength="120" />
+			</div>
+			<div class="field">
+				<label for="email">Email</label>
+				<input id="email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="160" />
+			</div>
+			<div class="field">
+				<label for="service">Project Type</label>
+				<select id="service" name="service" required>
+					<option value="" disabled selected>Select a project type</option>
+					{projectTypes.map((type) => <option value={type}>{type}</option>)}
+				</select>
+			</div>
+			<div class="field">
+				<label for="location">Region / Project Location</label>
+				<input
+					id="location"
+					name="location"
+					type="text"
+					autocomplete="address-level2"
+					required
+					maxlength="160"
+				/>
+			</div>
+			<div class="field">
+				<label for="message">Detail your property's architectural scope and infrastructure requirements.</label>
+				<textarea id="message" name="message" required maxlength="4000"></textarea>
+			</div>
+		</div>
+		<div class="hp" inert>
+			<label for="company_website">Website</label>
+			<input id="company_website" name="company_website" type="text" tabindex="-1" autocomplete="off" />
+		</div>
+		<div class="cluster">
+			<button class="btn btn-primary" type="submit">Request Architectural Consultation</button>
+		</div>
+	</div>
+	<p class="form-status" data-status hidden></p>
+</form>
+
+{
+	(site.phoneDisplay || site.email) && (
+		<p class="quiet">
+			{site.phoneTel && site.phoneDisplay && (
+				<>
+					Phone <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>.{' '}
+				</>
+			)}
+			{site.email && (
+				<>
+					Email <a href={`mailto:${site.email}`}>{site.email}</a>.
+				</>
+			)}
+		</p>
+	)
+}
+
+<script>
+	const form = document.querySelector('#consultation-form');
+	if (form instanceof HTMLFormElement) {
+		const endpoint = form.dataset.endpoint ?? '';
+		const startedAt = Date.now();
+		const status = form.querySelector('[data-status]');
+		const submit = form.querySelector('[type="submit"]');
+		const submitLabel = 'Request Architectural Consultation';
+
+		const showStatus = (message: string, isError: boolean) => {
+			if (!(status instanceof HTMLElement)) return;
+			status.hidden = false;
+			status.textContent = message;
+			status.classList.toggle('is-error', isError);
+		};
+
+		form.addEventListener('submit', async (event) => {
+			event.preventDefault();
+			if (!form.reportValidity()) return;
+
+			const honeypot = form.querySelector('#company_website');
+			if (honeypot instanceof HTMLInputElement && honeypot.value.trim() !== '') {
+				form.classList.add('is-sent');
+				showStatus('The consultation request has been received.', false);
+				return;
+			}
+
+			if (!endpoint) {
+				showStatus(
+					'This form is not connected yet. If a phone number or email is listed on this page, please use it.',
+					true,
+				);
+				return;
+			}
+
+			const data = new FormData(form);
+			const payload = {
+				name: String(data.get('name') ?? ''),
+				company: '',
+				email: String(data.get('email') ?? ''),
+				phone: '',
+				service: String(data.get('service') ?? ''),
+				location: String(data.get('location') ?? ''),
+				message: String(data.get('message') ?? ''),
+				contactMethod: 'Email',
+				startedAt,
+				source: 'meridian-website',
+			};
+
+			if (submit instanceof HTMLButtonElement) {
+				submit.disabled = true;
+				submit.textContent = 'Sending…';
+			}
+
+			try {
+				const response = await fetch(endpoint, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						Accept: 'application/json',
+					},
+					body: JSON.stringify(payload),
+				});
+				if (!response.ok) throw new Error('Request failed');
+				form.classList.add('is-sent');
+				showStatus('The consultation request has been received.', false);
+			} catch {
+				showStatus(
+					'The request could not be sent. Please try again, or use the phone or email listed on this page.',
+					true,
+				);
+				if (submit instanceof HTMLButtonElement) {
+					submit.disabled = false;
+					submit.textContent = submitLabel;
+				}
+			}
+		});
+	}
+</script>

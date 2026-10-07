@@ -1,0 +1,91 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import { faqs } from '../config/faqs';
+
+const description =
+	'UniFi network and UniFi Protect systems for estates and small businesses, deployed with the hardware concealed and managed through UniFi Site Manager.';
+---
+
+<ServiceLayout
+	title="Enterprise Infrastructure"
+	description={description}
+	eyebrow="Network"
+	heading="Enterprise Infrastructure. Concealed Deploys."
+	lede="High-capacity network architecture and structural security engineered to vanish into premium estates and small business properties."
+	crumb="UniFi Networking"
+	serviceName="UniFi network and security"
+	serviceType="Network installation"
+	faqs={faqs.unifi}
+	ctaLabel="Request a Consultation"
+	ctaTitle="Specify the network with the building."
+	ctaText="Walls, outbuildings, and what must stay separated are decided before equipment is placed."
+	related={[
+		{ href: '/security-cameras/', label: 'UniFi Protect', text: 'Cameras and recording planned with the network, not after it.' },
+		{ href: '/wifi-design/', label: 'Wi-Fi design', text: 'Access-point placement and Ethernet backhaul for the structure.' },
+		{ href: '/wireless-bridges/', label: 'Wireless bridges', text: 'A concealed link from the main building to an outbuilding.' },
+	]}
+>
+	<section class="section" aria-labelledby="approach-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="approach-heading">Hardware, concealed.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					Meridian Integrations delivers premier UniFi network and security solutions engineered for high-end
+					residential estates and growing small businesses. We design and deploy complete Ubiquiti ecosystems that
+					combine enterprise-grade Wi-Fi, seamless switching, and smart UniFi Protect surveillance into a single,
+					cohesive infrastructure.
+				</p>
+				<p>
+					Deployed with a zero-hardware visual footprint, your high-performance network remains hidden entirely
+					behind the walls. Leveraging the official UniFi Site Manager, we provide proactive cloud-based remote
+					management to monitor your network health 24/7. This allows us to optimize performance, patch security
+					vulnerabilities, and resolve connectivity anomalies instantly without ever disrupting your day.
+				</p>
+				<aside class="note">
+					<p>
+						Solutions are built with UniFi technology from Ubiquiti. Naming that platform is not a claim of dealer,
+						partner, or manufacturer-certified status.
+					</p>
+				</aside>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream" aria-labelledby="spec-heading">
+		<div class="wrap">
+			<h2 id="spec-heading">Specification</h2>
+			<ul class="index-list">
+				<li>
+					<strong>Full-Stack UniFi Ecosystems</strong>
+					<p>
+						Seamless integration of next-generation gateways, high-speed switching, and high-density Wi-Fi access
+						points.
+					</p>
+				</li>
+				<li>
+					<strong>Proactive Site Management</strong>
+					<p>
+						Continuous 24/7 remote monitoring and threat assessment via UniFi Site Manager for immediate anomaly
+						resolution.
+					</p>
+				</li>
+				<li>
+					<strong>Discrete UniFi Protect Surveillance</strong>
+					<p>
+						High-definition smart cameras and network video recorders (NVR) integrated seamlessly into your
+						structural lines.
+					</p>
+				</li>
+				<li>
+					<strong>Advanced Network Isolation</strong>
+					<p>
+						Custom VLAN configuration and robust firewall frameworks to guarantee absolute privacy for personal and
+						corporate traffic.
+					</p>
+				</li>
+			</ul>
+		</div>
+	</section>
+</ServiceLayout>

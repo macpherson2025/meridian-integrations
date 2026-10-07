@@ -1,0 +1,49 @@
+---
+interface Props {
+	brief?: boolean;
+}
+
+const { brief = false } = Astro.props;
+
+const traditional = [
+	'Monthly hosting bill',
+	'Proprietary page builders',
+	'Plugin maintenance',
+	'Database vulnerabilities',
+	'Separate backup systems',
+	'Difficult migrations',
+	'Performance optimization plugins',
+];
+
+const meridian = [
+	'No traditional hosting fee',
+	'Full source-code ownership',
+	'Minimal dependency architecture',
+	'Static-first architecture',
+	'Git version history',
+	'Portable codebase',
+	'Performance designed into the architecture',
+	'Cloudflare global edge delivery',
+];
+
+const left = brief ? traditional.slice(0, 4) : traditional;
+const right = brief ? meridian.slice(0, 4) : meridian;
+---
+
+<div class="compare">
+	<article>
+		<h3>Traditional website hosting</h3>
+		<ul>
+			{left.map((item) => <li>{item}</li>)}
+		</ul>
+	</article>
+	<article class="is-emphasis">
+		<h3>Meridian web infrastructure</h3>
+		<ul>
+			{right.map((item) => <li>{item}</li>)}
+		</ul>
+	</article>
+</div>
+<p class="sr-only">
+	Comparison of a traditional hosting stack with Meridian’s static, source-owned approach for qualifying sites.
+</p>

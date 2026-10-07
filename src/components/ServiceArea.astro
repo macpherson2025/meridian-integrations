@@ -1,0 +1,38 @@
+---
+interface Props {
+	compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+
+const places = ['Denver', 'Boulder', 'Broomfield', 'Superior', 'Lafayette', 'Louisville', 'Longmont'];
+---
+
+<section class="section" id="service-area" aria-labelledby="area-heading">
+	<div class="wrap split">
+		<div>
+			<p class="eyebrow">Colorado</p>
+			<h2 id="area-heading">A local practice for the Denver Metro.</h2>
+		</div>
+		<div class="prose">
+			<p>
+				Meridian Integrations works with homeowners, businesses, and property owners across the Denver Metro and
+				surrounding Colorado communities. The buildings vary. Foothill houses, city infill, professional offices,
+				restaurants, and lots with a workshop out back all show up in the same week.
+			</p>
+			{
+				!compact && (
+					<ul class="area-places" aria-label="Communities in the service area">
+						{places.map((place) => (
+							<li>{place}</li>
+						))}
+					</ul>
+				)
+			}
+			<p class="quiet">
+				Surrounding communities are part of the work as well.
+				{compact && <a href="/service-area/"> Service area</a>}
+			</p>
+		</div>
+	</div>
+</section>

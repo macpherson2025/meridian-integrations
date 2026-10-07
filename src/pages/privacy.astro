@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+import { breadcrumbNode } from '../config/schema';
+
+const description =
+	'How Meridian Integrations handles information submitted through this website. Draft pending legal review.';
+const path = Astro.url.pathname;
+---
+
+<BaseLayout
+	title="Privacy Policy"
+	description={description}
+	path={path}
+	extraSchema={[breadcrumbNode([{ name: 'Home', path: '/' }, { name: 'Privacy', path }])]}
+>
+	<nav class="crumbs" aria-label="Breadcrumb">
+		<div class="wrap">
+			<ol>
+				<li><a href="/">Home</a></li>
+				<li><span aria-current="page">Privacy</span></li>
+			</ol>
+		</div>
+	</nav>
+
+	<article class="section">
+		<div class="wrap-narrow prose">
+			{
+				!site.legalReviewed && (
+					<p class="legal-banner">
+						Draft for review by qualified counsel before this policy is relied on. Last drafted {site.legalDraftDate}.
+						It is not legal advice.
+					</p>
+				)
+			}
+			<h1>Privacy policy</h1>
+			<p>
+				This policy describes the {site.name} website. It will be updated when the business publishes a phone number,
+				email address, or form endpoint, and again if analytics or other processors are added.
+			</p>
+
+			<h2>What this site is</h2>
+			<p>
+				The site is a static website. It does not run a customer database in the browser, and it does not include
+				advertising trackers in this version. Pages can be read without creating an account.
+			</p>
+
+			<h2>Information you submit</h2>
+			<p>
+				The consultation form asks for your name, optional company, email, phone, the service you need, project
+				location, a description, and how you prefer to be contacted. When a secure form endpoint is connected, that
+				information is sent there so the business can reply. Until an endpoint is connected, the form cannot deliver
+				a request.
+			</p>
+			<p>
+				Do not include passwords, payment card numbers, or government identifiers in the project description. The
+				form is not a place for secrets.
+			</p>
+			<p>
+				A hidden field is included to reduce automated spam. Submissions may also be checked server-side for abuse.
+				That check happens at the endpoint, not by embedding credentials in the page.
+			</p>
+
+			<h2>Hosting and connection data</h2>
+			<p>
+				The site is designed to be hosted on Cloudflare. Like other hosts, Cloudflare may process connection data
+				such as IP address and browser details in server logs and security systems. That processing is described in
+				Cloudflare’s own privacy documentation. This site does not sell that information.
+			</p>
+
+			<h2>Cookies and analytics</h2>
+			<p>
+				This version of the site does not install an analytics package or advertising cookies. If measurement is
+				added later, this policy should be updated before that code ships, and any non-essential cookies should be
+				handled accordingly.
+			</p>
+
+			<h2>How long information is kept</h2>
+			<p>
+				Consultation requests are kept long enough to respond, to perform the work if you hire the business, and to
+				meet ordinary legal and accounting duties. Exact retention should be confirmed with counsel and then stated
+				here in place of this sentence.
+			</p>
+
+			<h2>Sharing</h2>
+			<p>
+				Information is not sold. It may be processed by the hosting provider and, once configured, by the form
+				endpoint that delivers consultation requests. Professional advisers may see it when the law or the engagement
+				requires that. Other sharing should be added to this policy before it happens.
+			</p>
+
+			<h2>Your requests</h2>
+			<p>
+				{
+					site.email ? (
+						<>
+							To ask about information you have sent, email <a href={`mailto:${site.email}`}>{site.email}</a>.
+						</>
+					) : (
+						<>
+							A public email address for privacy requests will be listed here once it is added to the site
+							configuration. Until then, use the contact details published on the contact page if they are available.
+						</>
+					)
+				}
+			</p>
+
+			<h2>Children</h2>
+			<p>This website is a business site. It is not directed at children, and it does not knowingly collect their information.</p>
+		</div>
+	</article>
+</BaseLayout>

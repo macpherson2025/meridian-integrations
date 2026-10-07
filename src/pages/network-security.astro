@@ -1,0 +1,94 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import { faqs } from '../config/faqs';
+
+const description =
+	'Network segmentation for Colorado homes and small businesses. Trusted devices, guests, cameras, and smart equipment kept on the parts of the network they need.';
+---
+
+<ServiceLayout
+	title="Network Segmentation & Security"
+	description={description}
+	eyebrow="Network security"
+	heading="A smarter network is also a safer network."
+	lede="Not every device needs to see every other device. Guests, cameras, laptops, and thermostats can share a building without sharing a single open network."
+	crumb="Network Security"
+	serviceName="Network segmentation and security"
+	serviceType="Network security"
+	faqs={faqs.security}
+	ctaLabel="Get a Network Assessment"
+	ctaTitle="Get a network assessment."
+	ctaText="If guests, cameras, and work computers currently share one WiFi name, there is a clearer way to arrange it."
+	related={[
+		{ href: '/unifi-networking/', label: 'UniFi networking', text: 'The gateway and switches that make separation real.' },
+		{ href: '/security-cameras/', label: 'Security cameras', text: 'Recorders belong on their own segment.' },
+		{ href: '/wifi-design/', label: 'Professional WiFi', text: 'Each group still needs signal where the people are.' },
+	]}
+>
+	<section class="section" aria-labelledby="problem-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="problem-heading">One password for everything is a single room.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					When a guest phone, a smart TV, a camera, and a work laptop all sit on the same network, a problem on the
+					least careful device has a short walk to the others. Flat networks are easy to set up. They are also easy
+					to cross.
+				</p>
+				<p>
+					Segmentation is the practice of giving each group the access it needs and refusing the rest. The result
+					is quieter daily life, not a new set of rules for the people in the house.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream" aria-labelledby="groups-heading">
+		<div class="wrap">
+			<h2 id="groups-heading">A practical arrangement.</h2>
+			<p class="lede">Names vary by property. The separation is the point.</p>
+			<ul class="index-list">
+				<li>
+					<strong>Trusted network</strong>
+					<p>Computers, phones, and servers. The devices that hold work and personal files.</p>
+				</li>
+				<li>
+					<strong>IoT network</strong>
+					<p>Smart TVs, automation gear, thermostats, and other devices that need the internet more than they need your laptop.</p>
+				</li>
+				<li>
+					<strong>Security network</strong>
+					<p>Cameras and recording equipment, reachable for viewing and management, not wandering the rest of the building.</p>
+				</li>
+				<li>
+					<strong>Guest network</strong>
+					<p>Internet access for visitors, without a route to private devices, printers, or cameras.</p>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="vlan-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="vlan-heading">VLANs and firewall rules, without the jargon first.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					A VLAN divides one physical network into separate logical ones. The same switches and cables can carry
+					several groups that do not automatically trust each other. Firewall rules then decide the exceptions: who
+					may reach a printer, who may only reach the internet, who may view a camera.
+				</p>
+				<p>
+					You do not have to remember the acronym. You should be able to say, in a sentence, which devices are
+					allowed to talk. The configuration is documented so that sentence remains true after the install.
+				</p>
+				<p>
+					Nothing here is a claim that a segmented network is immune to attack. It is a claim that unnecessary
+					paths have been closed.
+				</p>
+			</div>
+		</div>
+	</section>
+</ServiceLayout>

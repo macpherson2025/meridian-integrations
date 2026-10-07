@@ -1,0 +1,92 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import { faqs } from '../config/faqs';
+
+const description =
+	'Lutron motorized shades with concealed ceiling pockets and low-voltage power, specified to manage daylight, privacy, and glare.';
+---
+
+<ServiceLayout
+	title="Motorized Shades"
+	description={description}
+	eyebrow="Shades"
+	heading="Controlled Daylight. Invisible Integration."
+	lede="Ultra-silent motorized window treatments engineered to shape natural light while vanishing completely into your interior architecture."
+	crumb="Motorized Shades"
+	serviceName="Lutron motorized shades"
+	serviceType="Motorized shade installation"
+	faqs={faqs.shades}
+	ctaLabel="Request a Consultation"
+	ctaTitle="Specify the shades with the windows."
+	ctaText="Pockets, fabric, and power are decided with the architecture, before the glass is finished around a visible roller."
+	related={[
+		{ href: '/smart-home-automation/', label: 'Smart home', text: 'Lighting and shades commanded from the same keypad.' },
+		{ href: '/lutron-lighting/', label: 'Lutron lighting', text: 'Scenes that treat electric light and daylight as one setting.' },
+		{ href: '/unifi-networking/', label: 'Network', text: 'Schedules and remote control assume a stable network.' },
+	]}
+>
+	<section class="section" aria-labelledby="approach-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="approach-heading">Rollers, concealed.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					Windows define the aesthetic character of a premium space, but manual window coverings disrupt visual
+					harmony and pull focus from architectural views. Meridian Integrations installs precision-engineered
+					Lutron motorized shading systems that act as an invisible extension of your interior design.
+				</p>
+				<p>
+					By hiding power tracking and rollers inside custom-designed ceiling pockets, we ensure your shades
+					disappear completely when opened. Driven by low-voltage wired power, our intelligent shading systems
+					operate in absolute silence. They deploy symmetrically across entire facades, self-aligning to the exact
+					millimeter to manage solar heat, preserve privacy, and protect fine art from UV degradation without a
+					single visible cable.
+				</p>
+				<aside class="note">
+					<p>
+						Pocket depth, fabric, and solar schedules are specified for the building and the selected Lutron shade
+						system. Solutions are built with Lutron technology. That is not a claim of dealer, partner, or certified
+						status.
+					</p>
+				</aside>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream" aria-labelledby="spec-heading">
+		<div class="wrap">
+			<h2 id="spec-heading">Specification</h2>
+			<ul class="index-list">
+				<li>
+					<strong>Low-Voltage Wired Power</strong>
+					<p>
+						Reliable, hardwired power distribution built straight into your framework, eliminating batteries and
+						charging ports forever.
+					</p>
+				</li>
+				<li>
+					<strong>Concealed Pocket Engineering</strong>
+					<p>
+						Collaborative deployment with architects and builders to mount rollers completely flush inside ceiling
+						pockets.
+					</p>
+				</li>
+				<li>
+					<strong>Intelligent Solar Tracking</strong>
+					<p>
+						Automated scheduling that continuously tracks the sun's position to control glare, drop solar heat gain,
+						and lower utility draws.
+					</p>
+				</li>
+				<li>
+					<strong>Architectural Fabric Selection</strong>
+					<p>
+						A curated palette of premium sheer, privacy, and blackout textiles designed to blend invisibly with
+						custom wall finishes.
+					</p>
+				</li>
+			</ul>
+		</div>
+	</section>
+</ServiceLayout>

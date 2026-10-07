@@ -1,0 +1,127 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import { faqs } from '../config/faqs';
+import { site } from '../config/site';
+
+const description =
+	'Level 2 EV charger installation for Colorado homes and appropriate light-commercial properties, planned around panel capacity, the circuit, and how you drive.';
+---
+
+<ServiceLayout
+	title="EV Charger Installation"
+	description={description}
+	eyebrow="Energy"
+	heading="Charge at home. Start every day ready to drive."
+	lede="Level 2 charging is substantially faster than a standard 120-volt outlet. The useful install is the one that fits the panel, the drive, and the vehicle you actually own."
+	crumb="EV Charger Installation"
+	serviceName="Level 2 EV charger installation"
+	serviceType="EV charger installation"
+	faqs={faqs.ev}
+	ctaLabel="Plan Your EV Charger"
+	ctaTitle="Plan your EV charger installation."
+	ctaText="The vehicle, the panel, and where the charger should live are enough to start. A speed is quoted only after those are known."
+	related={[
+		{ href: '/unifi-networking/', label: 'UniFi networking', text: 'Connected chargers are happier on a network that reaches the garage.' },
+		{ href: '/wireless-bridges/', label: 'Wireless bridges', text: 'When the garage is a separate building and still needs a signal.' },
+		{ href: '/contact/', label: 'Discuss the panel', text: 'Photos of the panel and the parking spot save a round of guessing.' },
+	]}
+>
+	<section class="section" aria-labelledby="problem-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="problem-heading">A wall outlet is a slow compromise.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					Charging overnight from a standard 120-volt receptacle can work for very light driving. It is a poor fit
+					for a commute, a cold week, or a second vehicle. Level 2 equipment, on a dedicated circuit, is the
+					ordinary way to start the day with a useful charge.
+				</p>
+				<p>
+					How many miles that returns depends on the vehicle, the charger, the circuit, and the electrical system.
+					Those numbers are established for your project. They are not borrowed from a brochure.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream" aria-labelledby="scope-heading">
+		<div class="wrap">
+			<h2 id="scope-heading">Residential, and light commercial where it fits.</h2>
+			<ul class="index-list">
+				<li>
+					<strong>Installation</strong>
+					<p>Level 2 chargers, hardwired units, and NEMA receptacles where a receptacle is the right choice.</p>
+				</li>
+				<li>
+					<strong>The circuit</strong>
+					<p>Dedicated EV circuits, breaker installation, and conductor sizing for a continuous load.</p>
+				</li>
+				<li>
+					<strong>The building</strong>
+					<p>Garage upgrades, outdoor placements, and the distance from the panel to the parking spot.</p>
+				</li>
+				<li>
+					<strong>Connected chargers</strong>
+					<p>WiFi or network connectivity when the charger uses it for scheduling, load management, or status.</p>
+				</li>
+				<li>
+					<strong>What is already there</strong>
+					<p>Troubleshooting an existing EV circuit, replacing a charger, and planning for a second vehicle.</p>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="panel-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="panel-heading">Is your electrical panel ready for an EV charger?</h2>
+			</div>
+			<div class="prose">
+				<p>
+					EV charging is a significant electrical load, and it runs for hours. That is different from a tool that
+					draws power for a few minutes. The evaluation looks at the service capacity, the main panel rating, the
+					loads already in the house, open breaker space, the charger’s amperage, continuous-load rules, conductor
+					requirements, and how far the charger sits from the panel.
+				</p>
+				<p>
+					Some properties have adequate capacity. Others need an electrical upgrade, load management, or a charging
+					configuration that shares capacity instead of assuming the panel can take a second full circuit. A smart
+					panel or a load-management device can, in the right calculation, avoid a service change. It does not
+					replace that calculation, and it is not the right answer for every house.
+				</p>
+				<p>Future vehicles are cheaper to plan for now than to discover after the first conduit is closed up.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream" aria-labelledby="code-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="code-heading">Code, permits, and the manufacturer’s instructions.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					All electrical work is performed in accordance with applicable electrical codes, local permitting
+					requirements, manufacturer instructions, and licensing requirements, including inspection where it applies.
+				</p>
+				{
+					site.licenses.length > 0 ? (
+						<ul>
+							{site.licenses.map((license) => (
+								<li>
+									{license.label}: {license.value}
+								</li>
+							))}
+						</ul>
+					) : null
+				}
+				<p>
+					A consultation does not itself pull a permit or create a construction contract. Scope, price, and the
+					path through the local authority are set in the project agreement.
+				</p>
+			</div>
+		</div>
+	</section>
+</ServiceLayout>

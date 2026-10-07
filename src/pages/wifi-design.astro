@@ -1,0 +1,104 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import { faqs } from '../config/faqs';
+
+const description =
+	'WiFi design for Colorado homes and small businesses: access point placement, Ethernet backhaul, and tuning for the building — not another router in a closet.';
+---
+
+<ServiceLayout
+	title="Professional WiFi Design"
+	description={description}
+	eyebrow="WiFi"
+	heading="Professional WiFi and network design"
+	lede="Weak WiFi is rarely fixed by buying a louder access point. It is fixed by putting the right radios in the right places, on cable, in a network that is actually organized."
+	crumb="Professional WiFi"
+	serviceName="Professional WiFi design and installation"
+	serviceType="WiFi installation"
+	faqs={faqs.wifi}
+	ctaLabel="Get a Network Assessment"
+	ctaTitle="Get a network assessment."
+	ctaText="Describe where the signal fails and what the building is made of. A survey beats a guess."
+	related={[
+		{ href: '/unifi-networking/', label: 'UniFi networking', text: 'Switching, gateways, and the rest of the system.' },
+		{ href: '/wireless-bridges/', label: 'Wireless bridges', text: 'When the problem is another building, not another room.' },
+		{ href: '/network-security/', label: 'Network security', text: 'Guest, camera, and device networks that stay apart.' },
+	]}
+>
+	<section class="section" aria-labelledby="problem-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="problem-heading">More access points can make WiFi worse.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					Radios compete. Two access points shouting on the same channel, or a mesh hop through a stone wall, often
+					produce a stronger-looking signal and a worse experience. Phones cling to the wrong radio. Video calls
+					still fall apart.
+				</p>
+				<p>
+					Professional WiFi starts by asking what the building is doing to the signal, and what the people inside
+					need from it.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream" aria-labelledby="factors-heading">
+		<div class="wrap">
+			<h2 id="factors-heading">What actually gets considered.</h2>
+			<ul class="index-list">
+				<li>
+					<strong>Placement</strong>
+					<p>Access points go where clients are, with a view of the rooms that matter, not only where a cable happens to end.</p>
+				</li>
+				<li>
+					<strong>Signal</strong>
+					<p>
+						Signal strength — often discussed as RSSI, the level a client actually hears — is measured, not imagined.
+						Too little fails. Too much, from too many radios, creates its own trouble.
+					</p>
+				</li>
+				<li>
+					<strong>Airtime</strong>
+					<p>Channel use and interference from neighbors, microwaves, and your own equipment decide whether a clear-looking bar is usable.</p>
+				</li>
+				<li>
+					<strong>Construction</strong>
+					<p>Stone, plaster, mirrors, and radiant floors change the plan. Colorado houses are not empty drywall boxes.</p>
+				</li>
+				<li>
+					<strong>Backhaul</strong>
+					<p>Ethernet from the access point back to a managed switch is the reliable path. Wireless uplinks are a compromise, used when cable truly cannot go there.</p>
+				</li>
+				<li>
+					<strong>Density</strong>
+					<p>A home office and a Friday-night dining room are different problems. Client count changes the design.</p>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="services-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="services-heading">The work, specifically.</h2>
+			</div>
+			<div class="prose">
+				<ul>
+					<li>UniFi WiFi design and access point installation</li>
+					<li>Site surveys and optimization of existing systems</li>
+					<li>Ethernet backhaul, managed switches, and PoE</li>
+					<li>VLANs, guest WiFi, and isolation for smart-home and IoT devices</li>
+					<li>Camera segmentation so recorders are not on the open network</li>
+					<li>Home-office and small-business networking</li>
+					<li>Troubleshooting that starts with measurement</li>
+				</ul>
+				<p>
+					The aim is ordinary reliability: calls that hold, payments that complete, and a guest network that does
+					not wander into the office.
+				</p>
+			</div>
+		</div>
+	</section>
+</ServiceLayout>

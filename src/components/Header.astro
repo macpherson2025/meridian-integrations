@@ -1,0 +1,106 @@
+---
+import { site } from '../config/site';
+import { companyNav, serviceGroups } from '../config/navigation';
+
+const path = Astro.url.pathname;
+const serviceHrefs = serviceGroups.flatMap((group) => group.links.map((link) => link.href));
+const servicesCurrent = serviceHrefs.includes(path);
+
+function current(href: string) {
+	return path === href ? 'page' : undefined;
+}
+---
+
+<header class="site-header" data-nav-root>
+	<div class="header-bar">
+		<a class="logo" href="/" aria-label={`${site.name} home`}>
+			<span class="logo-text">
+				<span class="logo-name">Meridian</span>
+				<span class="logo-sub">Integrations</span>
+			</span>
+		</a>
+
+		<label class="nav-toggle">
+			<input class="nav-check" type="checkbox" />
+			<span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+			<span class="when-closed">Menu</span>
+			<span class="when-open">Close</span>
+		</label>
+		<div class="nav-panel">
+				<nav aria-label="Primary">
+					<ul class="nav-list">
+						<li><a class="nav-link" href="/" aria-current={current('/')}>Home</a></li>
+						<li>
+							<details class:list={['services-details', { 'is-current': servicesCurrent }]}>
+								<summary class="services-summary">Services</summary>
+								<div class="mega" id="services-menu">
+									<div class="mega-grid">
+										{
+											serviceGroups.map((group) => (
+												<div>
+													<p class="mega-label">{group.label}</p>
+													{
+														group.links.map((link) => (
+															<a class="mega-link" href={link.href} aria-current={current(link.href)}>
+																<span class="mega-link-title">{link.label}</span>
+																{link.description && <span class="mega-link-note">{link.description}</span>}
+															</a>
+														))
+													}
+												</div>
+											))
+										}
+									</div>
+								</div>
+							</details>
+						</li>
+						{
+							companyNav.map((item) => (
+								<li>
+									<a class="nav-link" href={item.href} aria-current={current(item.href)}>
+										{item.label}
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</nav>
+				<a class="btn btn-primary header-cta-mobile" href="/contact/">Request a Consultation</a>
+		</div>
+
+		<a class="btn btn-primary header-cta" href="/contact/">Request a Consultation</a>
+	</div>
+</header>
+
+<script>
+	const root = document.querySelector('[data-nav-root]');
+	if (root instanceof HTMLElement) {
+		const menus = root.querySelectorAll('details');
+		const navCheck = root.querySelector('.nav-check');
+
+		const closeAll = () => {
+			menus.forEach((menu) => {
+				menu.open = false;
+			});
+			if (navCheck instanceof HTMLInputElement) navCheck.checked = false;
+		};
+
+		document.addEventListener('click', (event) => {
+			const target = event.target;
+			if (!(target instanceof Node) || root.contains(target)) return;
+			menus.forEach((menu) => {
+				menu.open = false;
+			});
+		});
+
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape') closeAll();
+		});
+
+		root.querySelectorAll('a').forEach((link) => {
+			link.addEventListener('click', () => {
+				if (navCheck instanceof HTMLInputElement) navCheck.checked = false;
+			});
+		});
+	}
+</script>

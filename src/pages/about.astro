@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import CTA from '../components/CTA.astro';
+import { breadcrumbNode } from '../config/schema';
+import { site } from '../config/site';
+
+const description =
+	'Meridian Integrations designs the technology behind Colorado homes and businesses — websites, networks, cameras, EV charging, and automation you can own.';
+const path = Astro.url.pathname;
+---
+
+<BaseLayout
+	title="About"
+	description={description}
+	path={path}
+	extraSchema={[breadcrumbNode([{ name: 'Home', path: '/' }, { name: 'About', path }])]}
+>
+	<nav class="crumbs" aria-label="Breadcrumb">
+		<div class="wrap">
+			<ol>
+				<li><a href="/">Home</a></li>
+				<li><span aria-current="page">About</span></li>
+			</ol>
+		</div>
+	</nav>
+
+	<header class="page-hero">
+		<div class="wrap">
+			<p class="eyebrow">The practice</p>
+			<h1>The infrastructure behind a modern property.</h1>
+			<p class="lede">
+				Meridian Integrations is a Colorado technology practice for homes, businesses, and the buildings that sit
+				beside them. Websites, networks, cameras, EV charging, and automation are one body of work.
+			</p>
+		</div>
+	</header>
+
+	<section class="section" aria-labelledby="who-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="who-heading">Competence, kept quiet.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					The company people call when they want the technology done properly is rarely the one with the loudest
+					website. The work is planning and installing systems that disappear into daily use: a site that loads and
+					belongs to the business, a network that reaches the rooms, cameras that keep their footage, a charger that
+					respects the panel, lighting that recalls a scene.
+				</p>
+				<p>
+					{site.tagline} The supporting line is digital, network, energy, and automation — security included with
+					the network, because cameras and segmentation are not a separate hobby.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream" aria-labelledby="own-heading">
+		<div class="wrap">
+			<h2 id="own-heading">Designed around ownership.</h2>
+			<ul class="index-list">
+				<li>
+					<strong>Websites</strong>
+					<p>Source code you can hold, history you can roll back, and no page-builder lease as the price of editing a page.</p>
+				</li>
+				<li>
+					<strong>Networks</strong>
+					<p>Documented UniFi architecture on equipment the property controls.</p>
+				</li>
+				<li>
+					<strong>Security</strong>
+					<p>Local recording options and remote viewing that is intentional.</p>
+				</li>
+				<li>
+					<strong>Automation</strong>
+					<p>Lutron lighting and shades, with Josh.ai only when it earns a place in the design.</p>
+				</li>
+				<li>
+					<strong>Charging</strong>
+					<p>Electrical capacity understood before a charger is promised a circuit it cannot have.</p>
+				</li>
+			</ul>
+			<aside class="note">
+				<p>
+					Equipment is chosen from makers including Ubiquiti UniFi, Lutron, Josh.ai, GitHub, and Cloudflare. Working
+					with those technologies is not the same thing as an authorized dealership, a partnership, or a
+					manufacturer certification. None of those are claimed here.
+				</p>
+			</aside>
+		</div>
+	</section>
+
+	<section class="section" id="process" aria-labelledby="process-heading">
+		<div class="wrap">
+			<h2 id="process-heading">How a project moves.</h2>
+			<ProcessSteps />
+		</div>
+	</section>
+
+	<section class="section section-cream" aria-labelledby="not-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="not-heading">What this is not.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					Not a generic web agency, a computer-repair counter, a handyman list, or a catalog of smart-home gadgets.
+					Not a call center. Projects start with the property or the business and end with something documented.
+				</p>
+				<p>
+					There is no invented headcount, founding year, or stack of testimonials on this site. Trust is the
+					clarity of the recommendation, not a badge that was not earned in public.
+				</p>
+				<p>
+					The service area is the <a href="/service-area/">Denver Metro and surrounding Colorado communities</a>.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<CTA title="Discuss your project." label="Request a Consultation" href="/contact/" />
+</BaseLayout>

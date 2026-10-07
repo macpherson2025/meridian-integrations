@@ -1,0 +1,110 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import { faqs } from '../config/faqs';
+
+const description =
+	'Professionally integrated Lutron lighting for Colorado homes: dimmers, keypads, scenes, and schedules that belong to the architecture.';
+---
+
+<ServiceLayout
+	title="Lutron Lighting Installation"
+	description={description}
+	eyebrow="Lighting"
+	heading="Lutron lighting, designed into the house."
+	lede="Keypads, dimmers, and scenes replace a collection of smart bulbs. The room recalls a setting. Guests do not need an app to turn on a light."
+	crumb="Lutron Lighting"
+	serviceName="Lutron lighting installation"
+	serviceType="Lutron lighting installation"
+	faqs={faqs.lutron}
+	ctaLabel="Design Your Smart Home"
+	ctaTitle="Design the lighting."
+	ctaText="Bring the way the rooms are used. The keypads and scenes are drawn from that, not from a default program."
+	related={[
+		{ href: '/motorized-shades/', label: 'Motorized shades', text: 'Daylight and electric light, specified as one design.' },
+		{ href: '/smart-home-automation/', label: 'Smart home', text: 'Josh.ai and the rest of the control layer, when you want them.' },
+		{ href: '/unifi-networking/', label: 'The network', text: 'Remote access and integrations assume the network is real.' },
+	]}
+>
+	<section class="section" aria-labelledby="problem-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="problem-heading">This is not a DIY bulb project.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					Consumer bulbs are easy to buy and tiring to live with. They fall offline, they disagree about what
+					“evening” means, and they ask every person in the house to carry the same app. Lutron lighting is the
+					other tradition: equipment designed into the rooms, commissioned as a system, and left alone.
+				</p>
+				<p>
+					Solutions are built with Lutron technology. That is not a claim of authorized-dealer or certified-installer
+					status.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream" aria-labelledby="scope-heading">
+		<div class="wrap">
+			<h2 id="scope-heading">What a lighting design can cover.</h2>
+			<ul class="index-list">
+				<li>
+					<strong>Control</strong>
+					<p>Smart dimmers, keypads, and whole-home lighting control, including occupancy and vacancy behavior where it helps.</p>
+				</li>
+				<li>
+					<strong>Scenes</strong>
+					<p>Morning, evening, entertainment, and away — the settings you will actually recall, not a catalog of twenty.</p>
+				</li>
+				<li>
+					<strong>Schedules</strong>
+					<p>Exterior lighting and interior paths that follow the day without a nightly routine of tapping a phone.</p>
+				</li>
+				<li>
+					<strong>Shades and network</strong>
+					<p>
+						When shades are in the project, scenes can coordinate both. The network is planned so remote features are
+						not the fragile part of the house.
+					</p>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="keypad-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="keypad-heading">A keypad is the interface that does not expire.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					Engraved buttons for the scenes that matter let anyone operate the room. The app is there for changes and
+					for remote use. It is not required to walk in and have light. That distinction is the difference between
+					a gadget and a finish.
+				</p>
+				<p>
+					If voice control across lighting, shades, and other systems is part of the brief, Josh.ai can sit above
+					this layer. It is optional. Integration depends on the equipment selected for the house.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream" aria-labelledby="together-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="together-heading">Light and shade, as one gesture.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					Morning: selected shades rise and the lighting eases back. Evening: shades lower and interior light takes
+					over. A film: shades close and the room dims. Those are design choices, made when both systems are in the
+					project. A lighting-only house is not described as if the windows already move.
+				</p>
+				<p>
+					See <a href="/motorized-shades/">motorized shades</a> for the daylight side of the same idea.
+				</p>
+			</div>
+		</div>
+	</section>
+</ServiceLayout>

@@ -1,0 +1,43 @@
+---
+const steps = [
+	{
+		num: '01',
+		title: 'Consultation',
+		text: 'Understand the property, the business, the existing infrastructure, and what a finished result needs to do.',
+	},
+	{
+		num: '02',
+		title: 'Design',
+		text: 'Develop the website, network, electrical, security, or automation plan that fits those conditions.',
+	},
+	{
+		num: '03',
+		title: 'Installation',
+		text: 'Build, configure, install, test, and document the work. Deployment, for a website. Installation, for everything in the building.',
+	},
+	{
+		num: '04',
+		title: 'Verification',
+		text: 'Confirm performance and function before the project is called complete. Coverage, load, scenes, and page speed are checked, not assumed.',
+	},
+	{
+		num: '05',
+		title: 'Support',
+		text: 'Ongoing help is available when you need it, without forcing the system into a subscription it does not require.',
+	},
+];
+---
+
+<ol class="steps">
+	{
+		steps.map((step) => (
+			<li>
+				<span class="step-num">{step.num}</span>
+				<div>
+					<h3>{step.title}</h3>
+					<p>{step.text}</p>
+				</div>
+			</li>
+		))
+	}
+</ol>

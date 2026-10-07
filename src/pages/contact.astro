@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { site } from '../config/site';
+import { breadcrumbNode } from '../config/schema';
+
+const description =
+	'Request an architectural consultation with Meridian Integrations. Intake covers the property, the region, and the infrastructure the building requires.';
+const path = Astro.url.pathname;
+---
+
+<BaseLayout
+	title="Initiate Infrastructure Integration"
+	description={description}
+	path={path}
+	extraSchema={[breadcrumbNode([{ name: 'Home', path: '/' }, { name: 'Contact', path }])]}
+>
+	<nav class="crumbs" aria-label="Breadcrumb">
+		<div class="wrap">
+			<ol>
+				<li><a href="/">Home</a></li>
+				<li><span aria-current="page">Contact</span></li>
+			</ol>
+		</div>
+	</nav>
+
+	<header class="page-hero">
+		<div class="wrap">
+			<p class="eyebrow">Consultation</p>
+			<h1>Initiate Infrastructure Integration</h1>
+			<p class="lede">
+				Consultations are structured around architectural blue-prints, site requirements, and complete aesthetic
+				preservation.
+			</p>
+		</div>
+	</header>
+
+	<section class="section" aria-labelledby="intake-heading">
+		<div class="wrap intake">
+			<h2 id="intake-heading" class="sr-only">Consultation intake</h2>
+			<ContactForm />
+			<p class="quiet">Service area: {site.serviceArea}.</p>
+		</div>
+	</section>
+</BaseLayout>

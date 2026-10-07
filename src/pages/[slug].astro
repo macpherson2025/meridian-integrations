@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FAQ from '../components/FAQ.astro';
+import CTA from '../components/CTA.astro';
+import { locations, type LocationContent } from '../config/locations';
+import { flattenServices } from '../config/navigation';
+import { breadcrumbNode, faqNode, serviceNode } from '../config/schema';
+
+export function getStaticPaths() {
+	return locations
+		.filter((location) => location.published)
+		.map((location) => ({
+			params: { slug: location.slug },
+			props: { location },
+		}));
+}
+
+interface Props {
+	location: LocationContent;
+}
+
+const { location } = Astro.props;
+const path = `/${location.slug}/`;
+const services = flattenServices();
+const description = location.description;
+---
+
+<BaseLayout
+	title={location.title}
+	description={description}
+	path={path}
+	extraSchema={[
+		serviceNode({
+			name: `${location.name} technology integration`,
+			serviceType: 'Technology integration',
+			description,
+			path,
+		}),
+		breadcrumbNode([
+			{ name: 'Home', path: '/' },
+			{ name: 'Service Area', path: '/service-area/' },
+			{ name: location.name, path },
+		]),
+		...(location.faqs.length ? [faqNode(location.faqs)] : []),
+	]}
+>
+	<nav class="crumbs" aria-label="Breadcrumb">
+		<div class="wrap">
+			<ol>
+				<li><a href="/">Home</a></li>
+				<li><a href="/service-area/">Service Area</a></li>
+				<li><span aria-current="page">{location.name}</span></li>
+			</ol>
+		</div>
+	</nav>
+
+	<header class="page-hero">
+		<div class="wrap">
+			<p class="eyebrow">{location.name}, Colorado</p>
+			<h1>{location.title}</h1>
+			<p class="lede">{location.intro}</p>
+		</div>
+	</header>
+
+	<section class="section">
+		<div class="wrap split">
+			<div>
+				<h2>The properties</h2>
+			</div>
+			<div class="prose">
+				<p>{location.propertyCharacter}</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream">
+		<div class="wrap">
+			<h2>Project types that come up here</h2>
+			<ul class="index-list">
+				{
+					location.projectTypes.map((item) => (
+						<li>
+							<strong>{item.title}</strong>
+							<p>{item.text}</p>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap">
+			<h2>Services available in {location.name}</h2>
+			<ul class="index-list">
+				{
+					services.map((service) => (
+						<li>
+							<strong>
+								<a href={service.href}>{service.label}</a>
+							</strong>
+							<p>{service.description}</p>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	{
+		location.nearby.length > 0 && (
+			<section class="section section-cream">
+				<div class="wrap">
+					<h2>Nearby</h2>
+					<ul class="direct-list">
+						{location.nearby.map((item) => (
+							<li>
+								<a href={item.href}>{item.label}</a>
+							</li>
+						))}
+					</ul>
+				</div>
+			</section>
+		)
+	}
+
+	{location.faqs.length > 0 && <FAQ items={location.faqs} heading={`Questions from ${location.name}`} />}
+	<CTA title={`Discuss a ${location.name} project.`} label="Request a Consultation" />
+</BaseLayout>

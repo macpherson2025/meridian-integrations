@@ -1,0 +1,24 @@
+---
+interface Item {
+	href: string;
+	label: string;
+	text: string;
+}
+
+interface Props {
+	items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="related">
+	{
+		items.map((item) => (
+			<a href={item.href}>
+				<strong>{item.label}</strong>
+				<span>{item.text}</span>
+			</a>
+		))
+	}
+</div>

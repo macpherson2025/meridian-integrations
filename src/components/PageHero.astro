@@ -1,0 +1,37 @@
+---
+interface Props {
+	eyebrow: string;
+	heading: string;
+	lede: string;
+	primaryHref?: string;
+	primaryLabel?: string;
+	secondaryHref?: string;
+	secondaryLabel?: string;
+}
+
+const { eyebrow, heading, lede, primaryHref, primaryLabel, secondaryHref, secondaryLabel } = Astro.props;
+---
+
+<header class="page-hero">
+	<div class="wrap">
+		<p class="eyebrow">{eyebrow}</p>
+		<h1>{heading}</h1>
+		<p class="lede">{lede}</p>
+		{
+			(primaryHref || secondaryHref) && (
+				<div class="cluster">
+					{primaryHref && primaryLabel && (
+						<a class="btn btn-primary" href={primaryHref}>
+							{primaryLabel}
+						</a>
+					)}
+					{secondaryHref && secondaryLabel && (
+						<a class="btn btn-secondary" href={secondaryHref}>
+							{secondaryLabel}
+						</a>
+					)}
+				</div>
+			)
+		}
+	</div>
+</header>

@@ -1,0 +1,38 @@
+---
+interface Props {
+	title?: string;
+	text?: string;
+	href?: string;
+	label?: string;
+	secondaryHref?: string;
+	secondaryLabel?: string;
+}
+
+const {
+	title = 'Request a consultation',
+	text = 'Bring the property, the problem, and the result you want. The recommendation follows from that.',
+	href = '/contact/',
+	label = 'Request a Consultation',
+	secondaryHref,
+	secondaryLabel,
+} = Astro.props;
+---
+
+<section class="cta-band" aria-labelledby="cta-heading">
+	<div class="wrap cta-panel">
+		<div>
+			<h2 id="cta-heading">{title}</h2>
+			<p class="lede">{text}</p>
+		</div>
+		<div class="cluster">
+			<a class="btn btn-primary" href={href}>{label}</a>
+			{
+				secondaryHref && secondaryLabel && (
+					<a class="btn btn-secondary" href={secondaryHref}>
+						{secondaryLabel}
+					</a>
+				)
+			}
+		</div>
+	</div>
+</section>

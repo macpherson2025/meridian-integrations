@@ -1,0 +1,101 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import WirelessBridgeDiagram from '../components/WirelessBridgeDiagram.astro';
+import { faqs } from '../config/faqs';
+
+const description =
+	'Point-to-point wireless bridges, including 60 GHz where the path fits, to connect garages, workshops, and other Colorado buildings without trenching.';
+---
+
+<ServiceLayout
+	title="Wireless Bridge Installation"
+	description={description}
+	eyebrow="Wireless bridges"
+	heading="Connect buildings without trenching."
+	lede="A detached garage, workshop, barn, or guest house can join the main network without a trench across the yard — when the path between the buildings will actually carry a link."
+	crumb="Wireless Bridges"
+	serviceName="Point-to-point wireless bridge installation"
+	serviceType="Wireless bridge installation"
+	faqs={faqs.bridges}
+	ctaLabel="Connect Your Outbuilding"
+	ctaTitle="Connect your outbuilding."
+	ctaText="The distance, what blocks the view, and what the far building needs to run are the whole question."
+	related={[
+		{ href: '/wifi-design/', label: 'Professional WiFi', text: 'Once the link lands, the far building still needs a proper access point.' },
+		{ href: '/security-cameras/', label: 'Security cameras', text: 'A frequent reason to reach a second structure.' },
+		{ href: '/unifi-networking/', label: 'UniFi networking', text: 'The bridge is an extension of the main network, not a second hobby router.' },
+	]}
+>
+	<section class="section" aria-labelledby="problem-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="problem-heading">Trenching is sometimes the wrong expense.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					Fiber or Ethernet in conduit is excellent when the path is open and the run is justified. It is a poor
+					default when it means cutting a finished drive, a garden, or a long span to a barn for a workshop that
+					needs ordinary connectivity.
+				</p>
+				<p>
+					A properly engineered point-to-point bridge extends the main network across that gap. The remote building
+					then behaves like part of the property, not like a separate internet account.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream" aria-labelledby="diagram-heading">
+		<div class="wrap">
+			<h2 id="diagram-heading">How the link is arranged.</h2>
+			<p class="lede">
+				60 GHz radios are used where a short, clean path can carry a great deal of traffic. Other frequencies are
+				considered when the span is longer or the view is imperfect.
+			</p>
+			<WirelessBridgeDiagram />
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="uses-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="uses-heading">Where a bridge earns its place.</h2>
+			</div>
+			<div class="prose">
+				<ul>
+					<li>Detached garages and workshops</li>
+					<li>Barns, warehouses, and equipment buildings</li>
+					<li>Guest houses and remote offices</li>
+					<li>Camera locations that are awkward to cable</li>
+				</ul>
+				<p>On the far side, a solid link can support:</p>
+				<ul>
+					<li>WiFi and computers</li>
+					<li>Security cameras</li>
+					<li>Voice and other smart devices</li>
+					<li>A local switch and ordinary internet use</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream" aria-labelledby="honest-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="honest-heading">Line of sight decides more than the brochure.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					A clear path is the reliable case, especially at 60 GHz. Trees, rooflines, and foliage that fills in by
+					July can weaken or block a link that looked fine in March. Distance depends on the radios, the antennas,
+					weather, and how much performance you need at the far end. There is no single range that is honest for
+					every property.
+				</p>
+				<p>
+					If the path is marginal, the recommendation may still be conduit. The point of the visit is to know which
+					one before money is spent.
+				</p>
+			</div>
+		</div>
+	</section>
+</ServiceLayout>

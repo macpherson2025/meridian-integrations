@@ -1,0 +1,87 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import { faqs } from '../config/faqs';
+
+const description =
+	'Lutron lighting that replaces banks of switches with engraved keypads, and conceals dimming hardware in a central panel.';
+---
+
+<ServiceLayout
+	title="Architectural Lighting"
+	description={description}
+	eyebrow="Automation"
+	heading="Architectural Lighting. Zero Wall Clutter."
+	lede="Replace banks of traditional switches with elegant, single-read keypads that integrate seamlessly into your wall finishes."
+	crumb="Smart Home Automation"
+	serviceName="Architectural lighting"
+	serviceType="Lutron lighting installation"
+	faqs={faqs.smartHome}
+	ctaLabel="Request a Consultation"
+	ctaTitle="Specify the lighting with the rooms."
+	ctaText="Finishes, loads, and the location of the equipment panel are decided before a keypad is mounted."
+	related={[
+		{ href: '/motorized-shades/', label: 'Motorized shades', text: 'Daylight treated as part of the same concealed system.' },
+		{ href: '/lutron-lighting/', label: 'Lutron lighting', text: 'Keypads, dimming, and scenes specified for the architecture.' },
+		{ href: '/unifi-networking/', label: 'Network', text: 'The infrastructure that remote control depends on.' },
+	]}
+>
+	<section class="section" aria-labelledby="approach-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="approach-heading">Controls, consolidated.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					Sophisticated properties require balanced, layered light, but traditional electrical layouts compromise
+					your interior design with cluttered arrays of plastic switches. Meridian Integrations designs and deploys
+					unified Lutron lighting ecosystems that consolidate your controls.
+				</p>
+				<p>
+					By managing your dimming modules and loads from a centralized, hidden equipment panel, we eliminate the
+					physical footprint on your living space walls. Every keypad is custom-engraved, backlit, and
+					flush-mounted to blend invisibly with your architecture. A single button press seamlessly commands
+					complete lighting scenes, path illumination, and ambient settings across the entire property.
+				</p>
+				<aside class="note">
+					<p>
+						Solutions are built with Lutron technology. Naming a keypad line is not a claim of dealer, partner, or
+						certified status. Climate and shade control depend on the equipment specified for the property.
+					</p>
+				</aside>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream" aria-labelledby="spec-heading">
+		<div class="wrap">
+			<h2 id="spec-heading">Specification</h2>
+			<ul class="index-list">
+				<li>
+					<strong>Centralized Panel Architecture</strong>
+					<p>
+						Relocating noisy, bulky dimming hardware to a dedicated utility closet, leaving your living spaces
+						entirely clean.
+					</p>
+				</li>
+				<li>
+					<strong>Architectural Keypad Integration</strong>
+					<p>
+						Premium Lutron Palladiom or Alisse keypads meticulously selected to match custom stone, wood, or plaster
+						finishes.
+					</p>
+				</li>
+				<li>
+					<strong>Intelligent Scene Calibration</strong>
+					<p>
+						Tailored programming that balances natural daylight with interior fixtures for morning, evening, and
+						security modes.
+					</p>
+				</li>
+				<li>
+					<strong>Unified Environment Control</strong>
+					<p>Seamless blending of lighting, climate, and automated shades into a single, intuitive interface.</p>
+				</li>
+			</ul>
+		</div>
+	</section>
+</ServiceLayout>

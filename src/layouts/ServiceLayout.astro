@@ -1,0 +1,74 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import PageHero from '../components/PageHero.astro';
+import FAQ from '../components/FAQ.astro';
+import CTA from '../components/CTA.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { breadcrumbNode, faqNode, serviceNode, type Crumb } from '../config/schema';
+import type { FaqItem } from '../config/faqs';
+
+interface Props {
+	title: string;
+	description: string;
+	eyebrow: string;
+	heading: string;
+	lede: string;
+	crumb: string;
+	serviceName: string;
+	serviceType: string;
+	faqs?: readonly FaqItem[];
+	related?: { href: string; label: string; text: string }[];
+	ctaLabel?: string;
+	ctaTitle?: string;
+	ctaText?: string;
+	primaryHref?: string;
+}
+
+const {
+	title,
+	description,
+	eyebrow,
+	heading,
+	lede,
+	crumb,
+	serviceName,
+	serviceType,
+	faqs = [],
+	related = [],
+	ctaLabel = 'Request a Consultation',
+	ctaTitle = 'Tell us about the property.',
+	ctaText = 'A consultation is a conversation about the building, the business, and the result you want.',
+	primaryHref = '/contact/',
+} = Astro.props;
+
+const path = Astro.url.pathname;
+const crumbs: Crumb[] = [
+	{ name: 'Home', path: '/' },
+	{ name: crumb, path },
+];
+
+const extraSchema = [
+	serviceNode({ name: serviceName, serviceType, description, path }),
+	breadcrumbNode(crumbs),
+	...(faqs.length ? [faqNode(faqs)] : []),
+];
+---
+
+<BaseLayout title={title} description={description} path={path} extraSchema={extraSchema}>
+	<Breadcrumbs items={crumbs} />
+	<PageHero eyebrow={eyebrow} heading={heading} lede={lede} primaryHref={primaryHref} primaryLabel={ctaLabel} />
+	<slot />
+	{
+		related.length > 0 && (
+			<section class="section section-tight" aria-labelledby="related-heading">
+				<div class="wrap">
+					<h2 id="related-heading">Related work</h2>
+					<RelatedLinks items={related} />
+				</div>
+			</section>
+		)
+	}
+	{faqs.length > 0 && <FAQ items={faqs} />}
+	<CTA title={ctaTitle} text={ctaText} label={ctaLabel} href={primaryHref} />
+</BaseLayout>

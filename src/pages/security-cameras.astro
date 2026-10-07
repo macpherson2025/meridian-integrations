@@ -1,0 +1,118 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import { faqs } from '../config/faqs';
+
+const description =
+	'UniFi Protect camera systems with local recording and no mandatory cloud video subscription. Placement, coverage, and remote viewing planned for the property.';
+---
+
+<ServiceLayout
+	title="UniFi Security Cameras"
+	description={description}
+	eyebrow="Security"
+	heading="Your security footage. Under your control."
+	lede="Cameras are useful when they capture the right view and keep it. UniFi Protect records on equipment at the property, without a mandatory cloud video subscription."
+	crumb="Security Cameras"
+	serviceName="UniFi Protect security camera installation"
+	serviceType="Security camera installation"
+	faqs={faqs.cameras}
+	ctaLabel="Plan Your Camera System"
+	ctaTitle="Plan your camera system."
+	ctaText="Entrances, drives, outbuildings, and the views you actually need are more useful than a camera count."
+	related={[
+		{ href: '/unifi-networking/', label: 'UniFi networking', text: 'Cameras are only as solid as the network under them.' },
+		{ href: '/network-security/', label: 'Network security', text: 'Keep recorders and cameras off the everyday network.' },
+		{ href: '/wireless-bridges/', label: 'Wireless bridges', text: 'Cover a building that is awkward to cable.' },
+	]}
+>
+	<section class="section" aria-labelledby="problem-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="problem-heading">Cloud-only cameras rent you your own history.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					A consumer camera that stores video only in someone else’s cloud is convenient until the subscription
+					lapses, the company changes terms, or the clip you needed aged out of the plan. The lens is on your
+					house. The recording is not.
+				</p>
+				<p>
+					Local recording reverses that. A UniFi Protect recorder or a capable console keeps footage on equipment at
+					the property. You decide retention by storage and settings, not by a monthly video tier.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-cream" aria-labelledby="plan-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="plan-heading">Coverage is a placement problem.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					High-resolution cameras still miss what they are not pointed at. Doors, drives, gates, the side of a
+					workshop, and the counter of a small business each ask for a different view. Indoor and outdoor cameras,
+					including doorbell cameras, are chosen for those views.
+				</p>
+				<p>
+					Power, cable, and the recorder’s capacity are part of the same plan. A camera that cannot be reached
+					reliably, or that fills the disk in a weekend, is not a finished system.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="features-heading">
+		<div class="wrap">
+			<h2 id="features-heading">What a Protect system can include.</h2>
+			<ul class="index-list">
+				<li>
+					<strong>Local recording</strong>
+					<p>Video stored on a Protect recorder or console at the property. No mandatory cloud video subscription.</p>
+				</li>
+				<li>
+					<strong>Useful detections</strong>
+					<p>
+						On supported hardware: person detection, vehicle detection, smart search, and license plate recognition.
+						These are not features of every UniFi camera.
+					</p>
+				</li>
+				<li>
+					<strong>The right camera</strong>
+					<p>Doorbell, indoor, and outdoor models, specified for the light and the distance of the shot.</p>
+				</li>
+				<li>
+					<strong>Remote viewing</strong>
+					<p>Secure access for the people who should have it, designed with the gateway and the recorder — not left wide open.</p>
+				</li>
+			</ul>
+			<aside class="note">
+				<p>
+					Advanced detection capabilities depend on the selected UniFi camera and Protect hardware. A system is not
+					described as having facial recognition, license plate recognition, or every AI feature unless the chosen
+					equipment supports it.
+				</p>
+			</aside>
+		</div>
+	</section>
+
+	<section class="section section-cream" aria-labelledby="why-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="why-heading">Cameras belong on their own part of the network.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					Recording equipment should not sit on the same open network as every laptop. The camera segment, the
+					viewer permissions, and the path back to the gateway are designed together. That is also why a camera
+					project often starts as a network project.
+				</p>
+				<p>
+					Solutions are built with UniFi Protect. This is not a claim of an authorized dealer or certified-installer
+					relationship.
+				</p>
+			</div>
+		</div>
+	</section>
+</ServiceLayout>

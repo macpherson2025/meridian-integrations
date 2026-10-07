@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FAQ from '../components/FAQ.astro';
+import CTA from '../components/CTA.astro';
+import { faqs } from '../config/faqs';
+import { breadcrumbNode, faqNode } from '../config/schema';
+import { flattenServices } from '../config/navigation';
+
+const description =
+	'Technology integration for the Denver Metro and surrounding Colorado communities — homes, small businesses, and properties with outbuildings.';
+const path = Astro.url.pathname;
+const services = flattenServices();
+const places = ['Denver', 'Boulder', 'Broomfield', 'Superior', 'Lafayette', 'Louisville', 'Longmont'];
+---
+
+<BaseLayout
+	title="Service Area"
+	description={description}
+	path={path}
+	extraSchema={[
+		breadcrumbNode([
+			{ name: 'Home', path: '/' },
+			{ name: 'Service Area', path },
+		]),
+		faqNode(faqs.serviceArea),
+	]}
+>
+	<nav class="crumbs" aria-label="Breadcrumb">
+		<div class="wrap">
+			<ol>
+				<li><a href="/">Home</a></li>
+				<li><span aria-current="page">Service Area</span></li>
+			</ol>
+		</div>
+	</nav>
+
+	<header class="page-hero">
+		<div class="wrap">
+			<p class="eyebrow">Colorado</p>
+			<h1>Denver Metro and the communities around it.</h1>
+			<p class="lede">
+				Meridian Integrations is a local practice. The work is houses, professional offices, restaurants, and
+				properties whose useful rooms are not all under one roof.
+			</p>
+		</div>
+	</header>
+
+	<section class="section section-cream" aria-labelledby="property-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="property-heading">The buildings shape the work.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					Front Range houses mix new glass with older electrical services. Lots often include a detached garage or a
+					workshop that still needs WiFi and a camera. Small commercial streets need guest networks that do not
+					collide with the point of sale. Foothill construction — stone, grade, and distance between buildings —
+					changes both the wireless plan and the trench you might rather not dig.
+				</p>
+				<p>
+					Those conditions are why the service is integration rather than a single product. A city name, by itself,
+					does not change the recommendation. The property does.
+				</p>
+				<ul class="area-places" aria-label="Communities in the service area">
+					{places.map((place) => <li>{place}</li>)}
+				</ul>
+				<p>Surrounding communities are part of the work as well.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="available-heading">
+		<div class="wrap">
+			<h2 id="available-heading">Available throughout the service area.</h2>
+			<ul class="index-list">
+				{
+					services.map((service) => (
+						<li>
+							<strong>
+								<a href={service.href}>{service.label}</a>
+							</strong>
+							<p>{service.description}</p>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<FAQ items={faqs.serviceArea} heading="Service area questions" />
+	<CTA
+		title="If the property is in range, start with the project."
+		text="Location is one detail. The building, the business, and the result matter more."
+		label="Request a Consultation"
+	/>
+</BaseLayout>
