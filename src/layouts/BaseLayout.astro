@@ -1,11 +1,11 @@
 ---
-import '../styles/global.css';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import JsonLd from '../components/JsonLd.astro';
-import { site, absoluteUrl } from '../config/site';
-import { businessNode, websiteNode, webPageNode } from '../config/schema';
-import sansFont from '@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2';
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import JsonLd from "../components/JsonLd.astro";
+import { site, absoluteUrl } from "../config/site";
+import { businessNode, websiteNode, webPageNode } from "../config/schema";
+import sansFont from "@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2";
 
 interface Props {
 	title: string;
@@ -16,6 +16,8 @@ interface Props {
 	noindex?: boolean;
 	ogImage?: string;
 	extraSchema?: Record<string, unknown>[];
+	/** Omit the site header, footer, and outer main. The page supplies its own landmark. */
+	standalone?: boolean;
 }
 
 const {
@@ -24,15 +26,21 @@ const {
 	fullTitle,
 	path = Astro.url.pathname,
 	noindex = false,
-	ogImage = absoluteUrl('/og.png'),
+	ogImage = absoluteUrl("/og.png"),
 	extraSchema = [],
+	standalone = false,
 } = Astro.props;
 
 const documentTitle = fullTitle ?? `${title} | ${site.name}`;
 const canonical = absoluteUrl(path);
 const graph = {
-	'@context': 'https://schema.org',
-	'@graph': [websiteNode(), businessNode(), webPageNode({ title: documentTitle, description, path }), ...extraSchema],
+	"@context": "https://schema.org",
+	"@graph": [
+		websiteNode(),
+		businessNode(),
+		webPageNode({ title: documentTitle, description, path }),
+		...extraSchema,
+	],
 };
 ---
 
@@ -45,7 +53,10 @@ const graph = {
 		<title>{documentTitle}</title>
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonical} />
-		<meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
+		<meta
+			name="robots"
+			content={noindex ? "noindex, follow" : "index, follow"}
+		/>
 		<meta name="theme-color" content="#202321" />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content={site.name} />
@@ -56,7 +67,10 @@ const graph = {
 		<meta property="og:image" content={ogImage} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content="Meridian Integrations. Technology, integrated." />
+		<meta
+			property="og:image:alt"
+			content="Meridian Integrations. Technology, integrated."
+		/>
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={documentTitle} />
 		<meta name="twitter:description" content={description} />
@@ -64,15 +78,94 @@ const graph = {
 		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<link rel="manifest" href="/site.webmanifest" />
-		<link rel="preload" href={sansFont} as="font" type="font/woff2" crossorigin />
+		<link
+			rel="preload"
+			href={sansFont}
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
 		<JsonLd data={graph} />
+		<!-- Google Business Profile LocalBusiness Schema -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "LocalBusiness",
+				"name": "Meridian Integrations",
+				"image": "https://meridianintegrations.com",
+				"@id": "https://meridianintegrations.com",
+				"url": "https://meridianintegrations.com",
+				"telephone": "720-989-9807",
+				"priceRange": "$$$$",
+				"address": {
+					"@type": "PostalAddress",
+					"addressLocality": "Denver",
+					"addressRegion": "CO",
+					"addressCountry": "US"
+				},
+				"geo": {
+					"@type": "GeoCoordinates",
+					"latitude": 39.7392,
+					"longitude": -104.9903
+				},
+				"areaServed": [
+					{ "@type": "AdministrativeArea", "name": "Denver" },
+					{ "@type": "AdministrativeArea", "name": "Boulder" },
+					{ "@type": "AdministrativeArea", "name": "Littleton" },
+					{ "@type": "AdministrativeArea", "name": "Longmont" },
+					{ "@type": "AdministrativeArea", "name": "Castle Rock" }
+				],
+				"serviceArea": {
+					"@type": "GeoCircle",
+					"geoMidpoint": {
+						"@type": "GeoCoordinates",
+						"latitude": 39.7392,
+						"longitude": -104.9903
+					},
+					"geoRadius": "50000"
+				},
+				"hasOfferCatalog": {
+					"@type": "OfferCatalog",
+					"name": "Infrastructure and Automation Services",
+					"itemListElement": [
+						{
+							"@type": "Offer",
+							"itemOffered": {
+								"@type": "Service",
+								"name": "UniFi Network & Security Solutions"
+							}
+						},
+						{
+							"@type": "Offer",
+							"itemOffered": {
+								"@type": "Service"
+								"name": "Lutron Architectural Lighting & Motorized Shades"
+							}
+						},
+						{
+							"@type": "Offer",
+							"itemOffered": {
+								"@type": "Service",
+								"name": "High-Amperage EV Charger Installation"
+							}
+						}
+					]
+				}
+			}
+		</script>
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>
-		<Header />
-		<main id="main">
+		{standalone ? (
 			<slot />
-		</main>
-		<Footer />
+		) : (
+			<>
+				<Header />
+				<main id="main">
+					<slot />
+				</main>
+				<Footer />
+			</>
+		)}
 	</body>
 </html>
