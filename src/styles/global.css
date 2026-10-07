@@ -1482,22 +1482,24 @@ button:disabled {
 	font-weight: 400;
 }
 
-input,
-select,
-textarea {
-	width: 100%;
-	font: inherit;
-	color: inherit;
-	background: var(--color-surface);
-	border: 1px solid var(--color-border);
-	border-radius: 2px;
-	padding: 0.75rem 0.9rem;
-	min-height: 48px;
-}
+@layer base {
+	input,
+	select,
+	textarea {
+		width: 100%;
+		font: inherit;
+		color: inherit;
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		border-radius: 2px;
+		padding: 0.75rem 0.9rem;
+		min-height: 48px;
+	}
 
-textarea {
-	min-height: 150px;
-	resize: vertical;
+	textarea {
+		min-height: 150px;
+		resize: vertical;
+	}
 }
 
 select {

@@ -1,45 +1,109 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ContactForm from '../components/ContactForm.astro';
-import { site } from '../config/site';
-import { breadcrumbNode } from '../config/schema';
 
 const description =
-	'Request an architectural consultation with Meridian Integrations. Intake covers the property, the region, and the infrastructure the building requires.';
-const path = Astro.url.pathname;
+	'Consultations are structured around architectural blueprints, structural site requirements, and complete aesthetic preservation.';
 ---
 
 <BaseLayout
-	title="Initiate Infrastructure Integration"
+	title="Consultation Intake | Meridian Integrations"
+	fullTitle="Consultation Intake | Meridian Integrations"
 	description={description}
-	path={path}
-	extraSchema={[breadcrumbNode([{ name: 'Home', path: '/' }, { name: 'Contact', path }])]}
 >
-	<nav class="crumbs" aria-label="Breadcrumb">
-		<div class="wrap">
-			<ol>
-				<li><a href="/">Home</a></li>
-				<li><span aria-current="page">Contact</span></li>
-			</ol>
-		</div>
-	</nav>
+  <div class="w-full bg-[var(--color-background)] pt-24 pb-16 md:pt-32 md:pb-24">
+    <div class="max-w-3xl mx-auto px-6 md:px-12">
+      
+      <!-- Section Header -->
+      <div class="mb-12 border-b border-[var(--color-border)] pb-6">
+        <span class="text-xs font-bold tracking-widest text-[var(--color-accent)] uppercase block mb-3">
+          Project Onboarding
+        </span>
+        <h1 class="text-4xl font-bold tracking-tight text-[var(--color-text)] mb-4 leading-tight">
+          Initiate Infrastructure Integration
+        </h1>
+        <p class="text-sm md:text-base text-[var(--color-text-muted)] font-normal leading-relaxed">
+          Consultations are structured around architectural blueprints, structural site requirements, and complete aesthetic preservation. Provide your project parameters below to initiate the intake process.
+        </p>
+      </div>
 
-	<header class="page-hero">
-		<div class="wrap">
-			<p class="eyebrow">Consultation</p>
-			<h1>Initiate Infrastructure Integration</h1>
-			<p class="lede">
-				Consultations are structured around architectural blue-prints, site requirements, and complete aesthetic
-				preservation.
-			</p>
-		</div>
-	</header>
+      <!-- Modern Minimalist Intake Form -->
+      <form name="consultation-intake" method="POST" data-netlify="true" action="/success" class="space-y-8">
+        
+        <!-- Field 1: Name -->
+        <div class="flex flex-col space-y-2">
+          <label for="name" class="text-xs font-bold uppercase tracking-wider text-[var(--color-text)]">
+            Full Name / Principal Contact
+          </label>
+          <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            required 
+            class="w-full bg-white/5 border border-[var(--color-border)] rounded px-4 py-3 text-sm text-[var(--color-text)] focus:outline-none focus:border-[var(--color-accent)] transition-colors duration-200"
+            placeholder="e.g., Alexander Wright"
+          />
+        </div>
 
-	<section class="section" aria-labelledby="intake-heading">
-		<div class="wrap intake">
-			<h2 id="intake-heading" class="sr-only">Consultation intake</h2>
-			<ContactForm />
-			<p class="quiet">Service area: {site.serviceArea}.</p>
-		</div>
-	</section>
+        <!-- Field 2: Project Type Dropdown -->
+        <div class="flex flex-col space-y-2">
+          <label for="project-type" class="text-xs font-bold uppercase tracking-wider text-[var(--color-text)]">
+            Project Classification
+          </label>
+          <select 
+            id="project-type" 
+            name="project-type" 
+            required 
+            class="w-full bg-[var(--color-background)] border border-[var(--color-border)] rounded px-4 py-3 text-sm text-[var(--color-text)] focus:outline-none focus:border-[var(--color-accent)] transition-colors duration-200 cursor-pointer"
+          >
+            <option value="" disabled selected class="text-[var(--color-text-muted)]">Select project type...</option>
+            <option value="residential">Premium Residential Estate</option>
+            <option value="commercial">Commercial Property Development</option>
+            <option value="trade">Builder / Architect / Trade Inquiry</option>
+          </select>
+        </div>
+
+        <!-- Field 3: Location -->
+        <div class="flex flex-col space-y-2">
+          <label for="location" class="text-xs font-bold uppercase tracking-wider text-[var(--color-text)]">
+            Project Location / Region
+          </label>
+          <input 
+            type="text" 
+            id="location" 
+            name="location" 
+            required 
+            class="w-full bg-white/5 border border-[var(--color-border)] rounded px-4 py-3 text-sm text-[var(--color-text)] focus:outline-none focus:border-[var(--color-accent)] transition-colors duration-200"
+            placeholder="e.g., Cherry Hills Village, CO"
+          />
+        </div>
+
+        <!-- Field 4: Architectural Scope Textarea -->
+        <div class="flex flex-col space-y-2">
+          <label for="scope" class="text-xs font-bold uppercase tracking-wider text-[var(--color-text)]">
+            Architectural Scope & Infrastructure Requirements
+          </label>
+          <textarea 
+            id="scope" 
+            name="scope" 
+            rows="5" 
+            required 
+            class="w-full bg-white/5 border border-[var(--color-border)] rounded px-4 py-3 text-sm text-[var(--color-text)] focus:outline-none focus:border-[var(--color-accent)] transition-colors duration-200 resize-none leading-relaxed"
+            placeholder="Detail your property's physical footprint, blueprint timeline, and specific technology integration needs (e.g., hidden panel dimming, UniFi Protect arrays, Josh.ai nodes)."
+          ></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-4">
+          <button 
+            type="submit" 
+            class="w-full md:w-auto text-xs font-bold text-[var(--color-background)] bg-[var(--color-accent)] hover:bg-[var(--color-accent-bright)] transition-colors duration-200 uppercase tracking-widest px-8 py-4 rounded cursor-pointer shadow-sm"
+          >
+            Request Architectural Consultation
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
 </BaseLayout>
