@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import BaseHead from "../components/basehead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import JsonLd from "../components/JsonLd.astro";
@@ -26,7 +27,7 @@ const {
 	fullTitle,
 	path = Astro.url.pathname,
 	noindex = false,
-	ogImage = absoluteUrl("/og.png"),
+	ogImage = "https://www.meridianintegrations.com/og.png",
 	extraSchema = [],
 	standalone = false,
 } = Astro.props;
@@ -47,35 +48,14 @@ const graph = {
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<BaseHead
+			title={documentTitle}
+			description={description}
+			image={ogImage}
+			robots={noindex ? "noindex, follow" : undefined}
+		/>
 		<meta name="generator" content={Astro.generator} />
-		<title>{documentTitle}</title>
-		<meta name="description" content={description} />
-		<link rel="canonical" href={canonical} />
-		<meta
-			name="robots"
-			content={noindex ? "noindex, follow" : "index, follow"}
-		/>
 		<meta name="theme-color" content="#202321" />
-		<meta property="og:type" content="website" />
-		<meta property="og:site_name" content={site.name} />
-		<meta property="og:locale" content={site.locale} />
-		<meta property="og:title" content={documentTitle} />
-		<meta property="og:description" content={description} />
-		<meta property="og:url" content={canonical} />
-		<meta property="og:image" content={ogImage} />
-		<meta property="og:image:width" content="1200" />
-		<meta property="og:image:height" content="630" />
-		<meta
-			property="og:image:alt"
-			content="Meridian Integrations. Technology, integrated."
-		/>
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={documentTitle} />
-		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={ogImage} />
-		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<link rel="manifest" href="/site.webmanifest" />
 		<link
@@ -92,9 +72,9 @@ const graph = {
 				"@context": "https://schema.org",
 				"@type": "LocalBusiness",
 				"name": "Meridian Integrations",
-				"image": "https://meridianintegrations.com",
-				"@id": "https://meridianintegrations.com",
-				"url": "https://meridianintegrations.com",
+				"image": "https://www.meridianintegrations.com/og.png",
+				"@id": "https://www.meridianintegrations.com/#url",
+				"url": "https://www.meridianintegrations.com/",
 				"telephone": "720-989-9807",
 				"priceRange": "$$$$",
 				"address": {
@@ -109,11 +89,8 @@ const graph = {
 					"longitude": -104.9903
 				},
 				"areaServed": [
-					{ "@type": "AdministrativeArea", "name": "Denver" },
-					{ "@type": "AdministrativeArea", "name": "Boulder" },
-					{ "@type": "AdministrativeArea", "name": "Littleton" },
-					{ "@type": "AdministrativeArea", "name": "Longmont" },
-					{ "@type": "AdministrativeArea", "name": "Castle Rock" }
+					"Denver", "Boulder", "Cherry Hills Village", "Greenwood Village",
+					"Castle Pines", "Golden", "Highlands Ranch", "Louisville", "Lafayette", "Longmont"
 				],
 				"serviceArea": {
 					"@type": "GeoCircle",
@@ -138,7 +115,7 @@ const graph = {
 						{
 							"@type": "Offer",
 							"itemOffered": {
-								"@type": "Service"
+								"@type": "Service",
 								"name": "Lutron Architectural Lighting & Motorized Shades"
 							}
 						},
