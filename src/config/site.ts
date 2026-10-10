@@ -11,7 +11,7 @@
  */
 
 /** UPDATE: production origin, no trailing slash. Used for canonical URLs, Open Graph, sitemap, and robots.txt. */
-export const SITE_URL = 'https://meridianintegrations.com';
+export const SITE_URL = 'https://www.meridianintegrations.com';
 
 export const site = {
 	name: 'Meridian Integrations',

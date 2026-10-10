@@ -1,0 +1,56 @@
+---
+import { SEO } from "astro-seo";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  robots?: string;
+}
+
+const { 
+  title = "Meridian Integrations | Colorado Technology Integration", 
+  description = "Meridian Integrations engineers high-performance networking, structural security, and premium environmental automation infrastructure tailored for architectural preservation.",
+  image = "/og-image.jpg",
+  robots = "index, follow, max-image-preview:large",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, "https://www.meridianintegrations.com");
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<!-- Astro SEO Integration Engine -->
+<SEO
+  title={title}
+  description={description}
+  canonical={canonicalURL.toString()}
+  noindex={robots.startsWith("noindex")}
+  robotsExtras="max-image-preview:large"
+  openGraph={{
+    basic: {
+      title: title,
+      type: "website",
+      image: image,
+      url: canonicalURL.toString(),
+    },
+    optional: {
+      siteName: "Meridian Integrations",
+      description: description,
+    }
+  }}
+  twitter={{
+    card: "summary_large_image",
+    title: title,
+    description: description,
+    image: image,
+  }}
+  extend={{
+    meta: [
+      { name: "twitter:image:alt", content: title },
+    ]
+  }}
+/>
