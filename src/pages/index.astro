@@ -1,53 +1,415 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import FAQ from '../components/FAQ.astro';
+import CTA from '../components/CTA.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import ServiceArea from '../components/ServiceArea.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import NetworkDiagram from '../components/NetworkDiagram.astro';
+import WirelessBridgeDiagram from '../components/WirelessBridgeDiagram.astro';
+import WifiDiagram from '../components/WifiDiagram.astro';
+import { faqs } from '../config/faqs';
+import { breadcrumbNode, faqNode } from '../config/schema';
 
 const description =
-	'We are deploying our updated digital infrastructure. Meridian Integrations engineers high-performance networking, structural security, and automation systems designed to vanish into premium spaces.';
+	'Websites, UniFi networks, security cameras, EV charging, and Lutron automation for Colorado homes and businesses. Technology you own and control.';
+
+const extraSchema = [
+	faqNode(faqs.home),
+	breadcrumbNode([{ name: 'Home', path: '/' }]),
+];
 ---
 
 <BaseLayout
-	title="Meridian Integrations | Infrastructure & Automation"
-	fullTitle="Meridian Integrations | Infrastructure & Automation"
+	title="Home"
+	fullTitle="Meridian Integrations | Colorado Technology Integration"
 	description={description}
-	standalone
+	extraSchema={extraSchema}
 >
-  <main id="main" class="relative w-full min-h-screen bg-[var(--color-background)] flex flex-col justify-between pt-32 pb-16 px-6 md:px-12">
-    
-    <!-- Top Branding Anchor -->
-    <div class="max-w-6xl mx-auto w-full">
-      <span class="text-xs font-bold tracking-widest text-[var(--color-accent)] uppercase">
-        Meridian Integrations
-      </span>
-    </div>
+	<Hero />
 
-    <!-- Main Central Statement -->
-    <div class="max-w-6xl mx-auto w-full flex-grow flex flex-col justify-center my-auto">
-      <div class="max-w-2xl">
-        <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-[var(--color-text)] mb-6 leading-tight">
-          Systems Architecture.<br /> Currently Tuning.
-        </h1>
-        <p class="text-lg md:text-xl text-[var(--color-text-muted)] font-normal leading-relaxed mb-8">
-          We are deploying our updated digital infrastructure. Meridian Integrations engineers high-performance networking, structural security, and automation systems designed to vanish into premium spaces.
-        </p>
-        <div class="inline-flex items-center gap-2 border border-[var(--color-border)] px-4 py-2 rounded bg-white/5 backdrop-blur-sm">
-          <span class="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse"></span>
-          <span class="text-xs font-mono text-[var(--color-text-muted)] uppercase tracking-wider">
-            Site Launch Imminent
-          </span>
-        </div>
-      </div>
-    </div>
+	<section class="trust" aria-label="Disciplines">
+		<div class="wrap trust-row">
+			<p class="trust-line">Digital. Network. Energy. Automation.</p>
+			<p class="trust-note">Technology designed around the way you live and work — and kept in your control.</p>
+		</div>
+	</section>
 
-    <!-- Bottom Contact Intake Anchor -->
-    <div class="max-w-6xl mx-auto w-full border-t border-[var(--color-border)] pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-      <div>
-        <p class="text-xs font-bold text-[var(--color-text)] uppercase tracking-wider mb-1">Architectural Intake</p>
-        <p class="text-sm text-[var(--color-text-muted)]">Active project consultations remain uninterrupted.</p>
-      </div>
-      <a href="mailto:info@meridianintegrations.com" class="text-xs font-bold text-[var(--color-accent)] no-underline hover:text-[var(--color-accent-bright)] transition-colors duration-200 uppercase tracking-widest border-b border-[var(--color-accent)] pb-0.5">
-        Initiate Consultation &rarr;
-      </a>
-    </div>
+	<section class="section" id="services" aria-labelledby="services-heading">
+		<div class="wrap">
+			<div class="split">
+				<div>
+					<h2 id="services-heading">Invisible Technology. Flawless Aesthetics.</h2>
+				</div>
+				<p class="lede">
+					Meridian Integrations engineers high-performance networking, structural security,
+					and automation infrastructure designed to vanish into your architecture. 
+				</p>
+			</div>
+			<div class="quad lift">
+				<a class="service-card" href="/website-solutions/">
+					<span class="card-index">Digital</span>
+					<h3>Website &amp; cloud infrastructure</h3>
+					<p>
+						Fast, secure business websites on GitHub and Cloudflare, with the source code in your hands and no
+						traditional monthly hosting fee for qualifying static sites.
+					</p>
+					<span class="card-cta">Website Solutions</span>
+				</a>
+				<a class="service-card" href="/unifi-networking/">
+					<span class="card-index">Network</span>
+					<h3>UniFi · WiFi · Security</h3>
+					<p>
+						Professional WiFi, UniFi Protect cameras, network security, and high-speed wireless links for homes,
+						businesses, and outbuildings.
+					</p>
+					<span class="card-cta">Network &amp; Security</span>
+				</a>
+				<a class="service-card" href="/ev-charger-installation/">
+					<span class="card-index">Energy</span>
+					<h3>EV charging</h3>
+					<p>
+						Level 2 charging designed around the property’s electrical infrastructure and the way the vehicle is
+						actually driven.
+					</p>
+					<span class="card-cta">EV Charger Installation</span>
+				</a>
+				<a class="service-card" href="/smart-home-automation/">
+					<span class="card-index">Automation</span>
+					<h3>Lutron · Shades · Josh.ai</h3>
+					<p>
+						Lutron lighting, motorized shades, and Josh.ai, designed so a sophisticated house stays simple to live
+						in.
+					</p>
+					<span class="card-cta">Smart Home Solutions</span>
+				</a>
+			</div>
+		</div>
+	</section>
 
-  </main>
+	<section class="section section-stone" aria-labelledby="integrated-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="integrated-heading">Infrastructure, not a pile of gadgets.</h2>
+			</div>
+			<div class="prose">
+				<p>
+					A website, a network, a camera system, a charger, and a lighting scene fail in the same way when they are
+					bought one product at a time. They never quite belong to the building, or to the person who paid for them.
+				</p>
+				<p>
+					The work here is the layer underneath daily life and daily business: a site the company owns, a network
+					that reaches the rooms and the outbuilding, cameras that record locally, charging that respects the
+					panel, and lighting that recalls a scene instead of an app.
+				</p>
+				<p>
+					Customers should own and control the technology they pay for. That idea shows up differently in each
+					practice, and it is the same idea.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="web-heading">
+		<div class="wrap stack">
+			<div class="split">
+				<div>
+					<p class="eyebrow">Digital</p>
+					<h2 id="web-heading">Own your website. Not just your login.</h2>
+				</div>
+				<div class="prose">
+					<p>
+						Business sites are built as source code and published on Cloudflare’s network. For a qualifying static
+						site, that removes the traditional monthly hosting package — not the domain, email, or other services
+						you may still choose to buy.
+					</p>
+					<p>
+						You can hold the repository, see the history, and move the site later. Speed and security come from the
+						architecture, not from a stack of plugins.
+					</p>
+					<p><a class="btn btn-primary" href="/website-solutions/">Website solutions</a></p>
+				</div>
+			</div>
+			<ComparisonTable brief />
+		</div>
+	</section>
+
+	<section class="section section-stone" aria-labelledby="unifi-heading">
+		<div class="wrap split">
+			<div>
+				<p class="eyebrow">Network</p>
+				<h2 id="unifi-heading">UniFi network &amp; security solutions</h2>
+				<div class="prose">
+				<p>
+					Homes, offices, restaurants, workshops, and larger properties get a UniFi design: gateway, switching,
+					power over Ethernet, access points, and a configuration that matches how the building is used.
+				</p>
+				<p>
+					Guest WiFi, cameras, and ordinary computers do not have to share one flat network.
+					<a href="/network-security/">Segmentation</a> is part of the plan.
+				</p>
+				<p>
+					<a href="/unifi-networking/">UniFi networking</a> ·
+					<a href="/wifi-design/">Professional WiFi</a>
+				</p>
+				</div>
+			</div>
+			<figure class="frame">
+				<img
+					src="/images/network-closet.webp"
+					width="1152"
+					height="864"
+					alt="A wall-mounted network enclosure with a switch, short patch cables, and a gateway on a plywood backboard."
+					loading="lazy"
+				/>
+				<figcaption><span>Network</span><span>Enclosure</span></figcaption>
+			</figure>
+		</div>
+	</section>
+
+	<section class="section section-dark" aria-labelledby="cameras-heading">
+		<div class="wrap split">
+			<div>
+				<p class="eyebrow">Security / UniFi Protect</p>
+				<h2 id="cameras-heading">Your security footage. Under your control.</h2>
+				<div class="prose">
+					<p>
+						UniFi Protect records on equipment at the property. There is no mandatory cloud video subscription to keep
+						a useful history. Placement and coverage are planned, indoors and out, including doorbells where they help.
+					</p>
+					<p>
+						Advanced detection capabilities depend on the selected UniFi camera and Protect hardware. Person and
+						vehicle detection, smart search, and license plate recognition are features of supported equipment, not of
+						every camera.
+					</p>
+					<p><a class="btn btn-primary" href="/security-cameras/">Plan your camera system</a></p>
+				</div>
+			</div>
+			<div>
+				<figure class="frame">
+					<img
+						src="/images/camera-eave.webp"
+						width="1152"
+						height="864"
+						alt="A compact dark camera mounted under the wood eave of a limestone wall."
+						loading="lazy"
+					/>
+					<figcaption><span>UniFi Protect</span><span>Placement</span></figcaption>
+				</figure>
+				<ul class="cap-list">
+					<li>Local recording</li>
+					<li>Remote access</li>
+					<li>AI detection*</li>
+					<li>License plate recognition*</li>
+				</ul>
+				<p class="cap-note">*Available on supported equipment.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="wifi-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="wifi-heading">Professional WiFi &amp; network design</h2>
+				<div class="prose">
+					<p>
+						Adding access points does not automatically fix a building. Walls, interference, and a missing Ethernet
+						run decide more than the logo on the hardware.
+					</p>
+					<p>
+						Design covers placement, signal, channel use, backhaul, and separate networks for guests, cameras, and
+						everyday devices.
+					</p>
+					<p><a class="btn btn-primary" href="/wifi-design/">Design your network</a></p>
+				</div>
+			</div>
+			<WifiDiagram />
+		</div>
+	</section>
+
+	<section class="section section-stone" aria-labelledby="bridge-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="bridge-heading">Connect buildings without trenching.</h2>
+				<div class="prose">
+					<p>
+						A point-to-point wireless bridge, including 60 GHz where the path is right, can carry the main network
+						to a garage, workshop, barn, guest house, or remote office.
+					</p>
+					<p>The far building can then run WiFi, computers, cameras, voice, and other networked equipment.</p>
+					<p><a class="btn btn-primary" href="/wireless-bridges/">Connect your outbuilding</a></p>
+				</div>
+			</div>
+			<WirelessBridgeDiagram />
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="ev-heading">
+		<div class="wrap split">
+			<div>
+				<p class="eyebrow">Energy</p>
+				<h2 id="ev-heading">Charge at home. Start every day ready to drive.</h2>
+				<div class="prose">
+				<p>
+					Level 2 charging is substantially faster than a standard 120-volt outlet. How fast, exactly, depends on
+					the vehicle, the charger, the circuit, and the electrical system — so a speed is not promised up front.
+				</p>
+				<p>
+					The panel is evaluated before anything is mounted. Some properties already have capacity. Others need load
+					management or an upgrade. Neither answer is assumed.
+				</p>
+				<p>
+					Electrical work follows applicable code, permitting, manufacturer instructions, and licensing requirements.
+				</p>
+				<p><a class="btn btn-primary" href="/ev-charger-installation/">Plan your EV charger</a></p>
+				</div>
+			</div>
+			<figure class="frame">
+				<img
+					src="/images/ev-garage.webp"
+					width="1152"
+					height="864"
+					alt="A wall-mounted EV charger on a plaster garage wall beside a wood-trimmed opening."
+					loading="lazy"
+				/>
+				<figcaption><span>Energy</span><span>Level 2</span></figcaption>
+			</figure>
+		</div>
+	</section>
+
+	<section class="section section-warm" aria-labelledby="light-heading">
+		<div class="wrap stack">
+			<div class="split">
+				<div>
+					<p class="eyebrow">Automation</p>
+					<h2 id="light-heading">Your home should respond to how you live.</h2>
+				</div>
+				<div class="prose">
+					<p>
+						Lutron lighting and motorized shades are specified as architecture, not as a drawer of smart bulbs.
+						Scenes recall a room. Keypads work for anyone who walks in.
+					</p>
+					<p>
+						<a href="/lutron-lighting/">Lutron lighting</a> ·
+						<a href="/motorized-shades/">Motorized shades</a>
+					</p>
+				</div>
+			</div>
+			<figure class="frame">
+				<img
+					src="/images/shades-room.webp"
+					width="1152"
+					height="864"
+					alt="A living room with large windows, lowered fabric shades, limestone, and warm architectural lighting."
+					loading="lazy"
+				/>
+				<figcaption><span>Automation</span><span>Light and shade</span></figcaption>
+			</figure>
+			<div class="scene-grid">
+				<article>
+					<h3>Good morning</h3>
+					<p>Selected shades open. Lighting eases into daytime settings.</p>
+				</article>
+				<article>
+					<h3>Movie</h3>
+					<p>Shades lower. Lighting dims. The room is set for the screen.</p>
+				</article>
+				<article>
+					<h3>Good night</h3>
+					<p>Selected lights go off. Shades move to their nighttime positions.</p>
+				</article>
+				<article>
+					<h3>Away</h3>
+					<p>Lighting and compatible systems follow the away setting you defined.</p>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="josh-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="josh-heading">Josh.ai home intelligence</h2>
+			</div>
+			<div class="prose">
+				<p>
+					Josh.ai is an optional voice and app layer for homes that are already professionally integrated. It can
+					bring compatible lighting, shades, climate, audio, and other systems into one place.
+				</p>
+				<p>Integration capabilities depend on the selected equipment and system design. It is not a universal remote for every product on the market.</p>
+				<p><a class="btn btn-primary" href="/smart-home-automation/">Explore smart home</a></p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section-dark" aria-labelledby="plan-heading">
+		<div class="wrap split">
+			<div>
+				<h2 id="plan-heading">One home. One integrated technology plan.</h2>
+				<div class="prose">
+					<p>
+						A premium room is only as reliable as the network under it. WiFi, cameras, lighting, shades, and voice
+						control should branch from infrastructure that was designed, not from a router left in a closet.
+					</p>
+					<p>The property is treated as one environment. Products are not installed as if they had never met.</p>
+				</div>
+			</div>
+			<NetworkDiagram />
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="why-heading">
+		<div class="wrap">
+			<div class="split">
+				<div>
+					<h2 id="why-heading">Designed around ownership.</h2>
+				</div>
+				<p class="lede">The result should remain yours after the project is finished.</p>
+			</div>
+			<ul class="index-list">
+				<li>
+					<strong>Websites</strong>
+					<p>You can own the source code, hold repository access, and move the site. No proprietary page-builder lock-in.</p>
+				</li>
+				<li>
+					<strong>Networks</strong>
+					<p>Documented architecture on infrastructure you control, without a subscription that the network does not need.</p>
+				</li>
+				<li>
+					<strong>Security</strong>
+					<p>Local recording options, video you control, and remote access that is set up on purpose.</p>
+				</li>
+				<li>
+					<strong>Smart homes</strong>
+					<p>A real system design, a network that can carry it, and fewer disconnected apps.</p>
+				</li>
+				<li>
+					<strong>EV charging</strong>
+					<p>Capacity evaluated before installation, with the next vehicle considered while the first circuit is planned.</p>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="section section-stone" id="process" aria-labelledby="process-heading">
+		<div class="wrap">
+			<div class="split">
+				<div>
+					<h2 id="process-heading">From the first conversation to a system that holds.</h2>
+				</div>
+				<ProcessSteps />
+			</div>
+		</div>
+	</section>
+
+	<ServiceArea compact />
+	<FAQ items={faqs.home} intro="Short answers to the questions that usually decide a project. Each service page goes further." />
+	<CTA
+		title="Discuss your project."
+		text="Whether the need is a website, a network, a charger, or a house that should finally work as one system."
+		label="Request a Consultation"
+		secondaryHref="/about/"
+		secondaryLabel="About the practice"
+	/>
 </BaseLayout>
